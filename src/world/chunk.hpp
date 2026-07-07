@@ -6,18 +6,25 @@
 enum class Type : uint8_t {
     AIR = 0,
     Grass = 1,
+    Stone = 2,
+};
+
+struct Block {
+    Type type;
+    explicit Block(const Type type = Type::AIR) : type(type) {}
 };
 
 class Chunk {
 public:
-    struct Block {
-        Type type;
-        explicit Block(const Type type = Type::AIR) : type(type) {}
-    };
+    Chunk() = default;
 
     struct Vertex {
         glm::vec3 position;
     };
+
+    int chunk_x = 0;
+    //int chunk_y;
+    int chunk_z = 0;
 
     static constexpr int WIDTH = 16;
     static constexpr int HEIGH = 16;
@@ -42,6 +49,7 @@ public:
 
     bool is_dirty = false;
     bool has_terrain = false;
+    bool is_edge = false;
     bool has_mesh = false;
     bool in_render = false;
 };

@@ -2,4 +2,9 @@
 #include "chunk.hpp"
 #include <vector>
 
-extern std::vector<Chunk> world;
+namespace world {
+    extern std::vector<Chunk> world;
+
+    Chunk *chunk_find(int chunkX, int chunkZ);
+}
+
